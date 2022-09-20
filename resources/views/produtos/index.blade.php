@@ -24,8 +24,8 @@
             {{$produto->nome}}
 
 
-<<<<<<< HEAD
-            <div class="d-flex justify-content-between align-items-center">
+
+            <!-- <div class="d-flex justify-content-between align-items-center">
                 <span class="badge bg-secondary">
                     {{$produto->quantidade}}
                 </span>
@@ -34,8 +34,8 @@
                     @csrf
                     <button class="btn btn-danger btn-sm">Excluir</button>
                 </form>
-            </div>
-=======
+            </div> -->
+
             <span class="badge bg-secondary">
                 {{$produto->quantidade}}
             </span>
@@ -44,7 +44,7 @@
                 @csrf
                 <button class="btn btn-danger btn-sm">Excluir</button>
             </form>
->>>>>>> 69a16bb6bfdb641d043d907f0abfb75a2ae95ec1
+
 
 
         </li>
