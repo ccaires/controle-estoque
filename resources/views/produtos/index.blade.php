@@ -18,6 +18,12 @@
     </div>
     @endisset
 
+    <div class="d-flex justify-content-between align-items-center">
+        <h5>Produto</h5>
+        <h5>Quantidade</h5>
+        <h5>Ação</h5>
+    </div>
+
     <ul class="list-group">
         @foreach($produtos as $produto)
         <li class="list-group-item d-flex justify-content-between align-items-center">
