@@ -13,7 +13,6 @@ class ProdutosController extends Controller
 {
     public function index(Request $request, Categorias $categoria)
     {
-               
         $produtos = Produtos::all()->where('categoria',$categoria);
         
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
@@ -47,6 +46,22 @@ class ProdutosController extends Controller
         $request->session()->flash('mensagem.sucesso',"Produto '{$id->nome}' removido com sucesso");
 
         return redirect(route('produtos.index',$categoria));
+    }
+
+    public function show(Request $request, $categoria)
+    {
+        
+        $p_produto = $request->query('p_produto');
+        //dd($p_produto);
+
+        $produtos = DB::table('produtos')
+            ->where('nome','like',"%".$p_produto."%")->get();
+
+        //dd($produtos);
+
+        return view('produtos.search')
+            ->with('categoria',$categoria)
+            ->with('produtos',$produtos);
     }
        
 }

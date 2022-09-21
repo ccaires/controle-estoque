@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\LoteController;
+use App\Http\Controllers\Pesquisar;
+use App\Http\Controllers\PesquisarController;
 use App\Http\Controllers\ProdutosController;
+use App\Models\Produtos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,11 +37,12 @@ Route::post('/categorias/destroy/{id}', [CategoriasController::class, 'destroy']
 //     ->name('produtos.create');
 
 Route::resource('/categorias/{categoria}/produtos', ProdutosController::class)
-    ->only(['index', 'create','store']);
+    ->only(['index','create','store','show']);
 
 
 Route::post('/categorias/produtos/destroy/{id}', [ProdutosController::class, 'destroy'])
-    ->name('produtos.destroy');    
+    ->name('produtos.destroy');
+
 
 // Route::post('/produtos/destroy/{id}',[ProdutosController::class, 'destroy'])
 //     ->name('produtos.destroy');
