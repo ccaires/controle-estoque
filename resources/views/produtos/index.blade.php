@@ -7,7 +7,7 @@
             </div>
 
             <div class="col-3 mb-3">
-                <a href="/categorias" class="btn btn-warning">VOLTAR</a>
+                <a href="{{route('categorias.index')}}" class="btn btn-warning">VOLTAR</a>
             </div>
         </div>
     </div>
@@ -30,7 +30,6 @@
             {{$produto->nome}}
 
 
-
             <!-- <div class="d-flex justify-content-between align-items-center">
                 <span class="badge bg-secondary">
                     {{$produto->quantidade}}
@@ -51,9 +50,7 @@
                 <button class="btn btn-danger btn-sm">Excluir</button>
             </form>
 
-
-
-        </li>
+            </li>
         @endforeach
     </ul>
 </x-layout>

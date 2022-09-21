@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\DB;
 
 class ProdutosController extends Controller
 {
-    public function index(Request $request,Categorias $categoria)
+    public function index(Request $request, Categorias $categoria)
     {
+               
         $produtos = Produtos::all()->where('categoria',$categoria);
-        //dd($produtos->all());
-
+        
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
         
         return view('produtos.index')
@@ -30,36 +30,23 @@ class ProdutosController extends Controller
         return view('produtos.create')->with('categoria', $categoria);
     }
 
-    public function store(ProdutosFormRequest $request)
+    public function store(ProdutosFormRequest $request, $categoria)
     {
-        $categoria = $request->categoria_id;
-
-        // $categoria = DB::table('categorias')->get();
-        // dd($categoria->id);
-
+        
         Produtos::create($request->all());
-     
         $request->session()->flash('mensagem.sucesso','Produto cadastrado com sucesso');
 
-        // return redirect()->action([ProdutosController::class,'index']);
-        //return redirect(route('produtos.index'))->with('categoria', $categoria);
-        return redirect("http://localhost:8000/categorias/$categoria/produtos");
+        return redirect(route('produtos.index',$categoria));
     }
 
     public function destroy(Produtos $id, Request $request)
     {
+        $categoria = $id->categoria->id;
         $id->delete();
-        //dd($id);
-        $categoria = $id->categoria_id;
-        // dd($categoria);
 
-        //dd($request->id);
-        //Produtos::destroy($request->id);
         $request->session()->flash('mensagem.sucesso',"Produto '{$id->nome}' removido com sucesso");
 
-        // return redirect(route('produtos.index'))->with('categoria', $categoria);
-        return redirect("http://localhost:8000/categorias/$categoria/produtos");
+        return redirect(route('produtos.index',$categoria));
     }
-
        
 }

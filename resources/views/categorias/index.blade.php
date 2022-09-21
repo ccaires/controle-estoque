@@ -14,10 +14,16 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 {{$categoria->categoria}}
 
-                <form action="{{ route('categorias.destroy',$categoria->id) }}" method="post">
-                    @csrf
-                    <button class="btn btn-danger btn-sm">Excluir</button>
-                </form>
+                <div class="d-flex justify-content-between">
+                    <form action="" method="post">
+                        @csrf
+                        <button class="btn btn-primary btn-sm mb-10">Editar</button>
+                    </form>
+                    <form action="{{ route('categorias.destroy',$categoria->id) }}" method="post">
+                        @csrf
+                        <button class="btn btn-danger btn-sm">Excluir</button>
+                    </form>
+                </div>
             </li>
         </a>
 

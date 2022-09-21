@@ -1,6 +1,6 @@
 <x-layout title="Cadastro Produto">
     <h1>Adicionar novo Produto</h1>
-    <form action="{{route('produtos.store')}}" method="post">
+    <form action="{{route('produtos.store', $categoria)}}" method="post">
         @csrf
         <div class="mb-3">
             <div class="row mt-3">
@@ -29,6 +29,6 @@
             </div>
         </div>
         <button type="submit" class="btn btn-primary mt-3">Adicionar</button>
-        <a href="/produtos" class="btn btn-warning mt-3">VOLTAR</a>
+        <a href="{{route('produtos.index', $categoria)}}" class="btn btn-warning mt-3">VOLTAR</a>
     </form>
 </x-layout>
