@@ -12,11 +12,15 @@
         </div>
     </div>
 
-    <form action="{{route('search')}}" method="GET">
-        <div class="container">
+    <form action="" method="GET">
+        <div class="container mb-4">
             <div class="row">
-            <input type="search" id="p_produto" name="p_produto" class="form-control">
-            <button type="submit" class="btn btn-info">Pesquisar</button>
+                <div class="col-4">
+                    <input type="search" id="p_produto" name="p_produto" class="form-control" value="{{$p_produto}}">
+                </div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-info">Pesquisar</button>
+                </div>
             </div>
         </div>
     </form>

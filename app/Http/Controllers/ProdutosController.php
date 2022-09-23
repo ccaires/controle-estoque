@@ -13,6 +13,19 @@ class ProdutosController extends Controller
 {
     public function index(Request $request, Categorias $categoria)
     {
+        
+        $p_produto = $request['p_produto'];
+        if($p_produto != ""){
+        $produtos = Produtos::where('nome','like',"%$p_produto%")
+                ->get();
+
+            return view('produtos.index')
+            ->with('categoria',$categoria)
+            ->with('p_produto',$p_produto)
+            ->with('produtos',$produtos);
+        } else {
+        $p_produto = "";
+
         $produtos = Produtos::all()->where('categoria',$categoria);
         
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
@@ -20,7 +33,9 @@ class ProdutosController extends Controller
         return view('produtos.index')
             ->with('produtos', $produtos)
             ->with('categoria',$categoria)
+            ->with('p_produto',$p_produto)
             ->with('mensagemSucesso',$mensagemSucesso);
+        }      
     }
 
     public function create($categoria)
@@ -48,20 +63,19 @@ class ProdutosController extends Controller
         return redirect(route('produtos.index',$categoria));
     }
 
-    public function search(Request $request, Produtos $produto)
-    {
-        //dd($request);
-        //dd($request->all());
-        $p_produto = $request->input('p_produto');
-        //dd($p_produto);
+    // public function search(Request $request)
+    // {
+    //     // $p_produto = $request->input('p_produto');
+    //     // $produtos = Produtos::query()
+    //     //     ->where('nome','like',"%$p_produto%")->get();
 
-        $produtos = Produtos::query()
-            ->where('nome','like',"%$p_produto%")->get();
+    //     $p_produto = $request['p_produto'];
+    //     $produtos = Produtos::where('nome','like',"%$p_produto%")->get();
 
-        //$categoria = $produtos->categoria_id;
 
-        return view('produtos.search')
-                ->with('produtos',$produtos);
-    }
+    //     return view('produtos.search')
+    //             ->with('produtos',$produtos)
+    //             ->with('search',$p_produto);
+    // }
        
 }
