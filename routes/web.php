@@ -31,7 +31,7 @@ Route::post('/categorias/destroy/{id}', [CategoriasController::class, 'destroy']
     ->name('categorias.destroy');
 
 Route::resource('/categorias/{categoria}/produtos', ProdutosController::class)
-    ->only(['index', 'create', 'store']);
+    ->only(['index', 'create', 'store','retirar']);
 
 Route::get('/categorias/produtos/', [ProdutosController::class, 'search'])
     ->name('search');

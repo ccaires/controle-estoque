@@ -31,12 +31,14 @@
     </div>
     @endisset
 
-    <div class="d-flex justify-content-between align-items-center">
+
+    <div class="d-flex justify-content-between">
         <h5>Produto</h5>
         <h5>Quantidade</h5>
         <h5>Vencimento</h5>
         <h5>Ação</h5>
     </div>
+
 
     <ul class="list-group">
         @foreach($produtos as $produto)
@@ -56,7 +58,17 @@
 
             <form action="{{ route('produtos.destroy', $produto->id) }}" method="post">
                 @csrf
+                <button class="btn btn-primary btn-sm">Editar</button>
+            </form>
+
+            <form action="{{ route('produtos.destroy', $produto->id) }}" method="post">
+                @csrf
                 <button class="btn btn-danger btn-sm">Excluir</button>
+            </form>
+
+            <form action="" method="post">
+                @csrf
+                <button class="btn btn-danger btn-sm bi bi-cart-dash"></button>
             </form>
 
         </li>

@@ -77,5 +77,10 @@ class ProdutosController extends Controller
     //             ->with('produtos',$produtos)
     //             ->with('search',$p_produto);
     // }
+
+    public function retirar()
+    {
+        # code...
+    }
        
 }
