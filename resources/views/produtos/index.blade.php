@@ -12,15 +12,11 @@
         </div>
     </div>
 
-    <form action="{{route('produtos.show')}}">
+    <form action="{{route('search')}}" method="GET">
         <div class="container">
             <div class="row">
-                <div class="col-4 mb-3">
-                    <input type="text" class="form-control" name="p_produto" value="" id="produto" placeholder="Pesquisar...">
-                </div>
-                <div class="col-4 bm-3">
-                    <button type="submit" class="btn btn-info">Pesquisar</button>
-                </div>
+            <input type="search" id="p_produto" name="p_produto" class="form-control">
+            <button type="submit" class="btn btn-info">Pesquisar</button>
             </div>
         </div>
     </form>
