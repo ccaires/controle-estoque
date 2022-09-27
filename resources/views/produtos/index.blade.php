@@ -63,11 +63,7 @@
                         @csrf
                         <button class="btn btn-danger btn-sm bi bi-cart-dash"></button>
                     </form>
-                    <form action="" method="post">
-                        @csrf
-                        <button class="btn btn-primary btn-sm ms-2">Editar</button>
-                    </form>
-
+                    <a href="{{route('produtos.edit', $produto->id) }}" class="btn btn-primary btn-sm mb-10">Editar</a>
                     <form action="{{ route('produtos.destroy', $produto->id) }}" method="post">
                         @csrf
                         <button class="btn btn-danger btn-sm ms-2">Excluir</button>

@@ -73,6 +73,24 @@ class ProdutosController extends Controller
 
         return view('produtos.search')
             ->with('produtos',$produtos);
-       
-}
+    }
+
+    public function edit(Produtos $produto)
+    {
+        $categoria = $produto->categoria_id;
+        return view('produtos.edit')->with('produto',$produto)->with('categoria',$categoria);
+    }
+
+    public function update(Produtos $produto, Request $request)
+    {
+        $categoria = $produto->categoria_id;
+        $produto->nome = $request->produto;
+        $produto->lote_id = $request->lote_id;
+        $produto->quantidade = $request->quantidade;
+        $produto->vencimento = $request->vencimento;
+        $produto->save();
+
+        return redirect(route('produtos.index',$categoria))
+            ->with('mensagem.sucesso', "Produto '$produto->nome' atualizado");
+    }
 }
