@@ -7,16 +7,17 @@
             </div>
 
             <div class="col-3 mb-3">
-                <a href="{{route('categorias.index')}}" class="btn btn-warning">VOLTAR</a>
+                <a href="{{route('categorias.index', $categoria)}}" class="btn btn-warning">VOLTAR</a>
             </div>
         </div>
     </div>
 
-    <form action="{{route('produtos.show')}}">
+    <form action="{{route('produtos.index', $categoria->id)}}" method="get">
+        @csrf
         <div class="container">
             <div class="row">
                 <div class="col-4 mb-3">
-                    <input type="text" class="form-control" name="p_produto" value="" id="produto" placeholder="Pesquisar...">
+                    <input type="text" class="form-control" name="p_produto" value="{{$p_produto}}" placeholder="Pesquisar...">
                 </div>
                 <div class="col-4 bm-3">
                     <button type="submit" class="btn btn-info">Pesquisar</button>

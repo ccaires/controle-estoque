@@ -30,18 +30,14 @@ Route::resource('/categorias', CategoriasController::class)
 Route::post('/categorias/destroy/{id}', [CategoriasController::class, 'destroy'])
     ->name('categorias.destroy');
 
-// Route::get('/categorias/{categoria}/produtos', [ProdutosController::class, 'index'])
-//     ->name('produtos.index');
-
-// Route::get('/categorias/{categoria}/produtos/create', [ProdutosController::class, 'create'])
-//     ->name('produtos.create');
-
 Route::resource('/categorias/{categoria}/produtos', ProdutosController::class)
-    ->only(['index','create','store','show']);
-
+    ->only(['index', 'create', 'store']);
 
 Route::post('/categorias/produtos/destroy/{id}', [ProdutosController::class, 'destroy'])
     ->name('produtos.destroy');
+
+// Route::post('/categorias/{categoria}/produtos', [ProdutosController::class, 'search'])
+//     ->name('produtos.search');
 
 
 // Route::post('/produtos/destroy/{id}',[ProdutosController::class, 'destroy'])

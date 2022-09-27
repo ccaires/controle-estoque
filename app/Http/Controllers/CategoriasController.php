@@ -10,7 +10,7 @@ class CategoriasController extends Controller
 {
     public function index(Request $request)
     {
-        //dd($request->all());
+        //dd($categoria->all());
         $categorias = Categorias::all();
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
 
@@ -45,5 +45,20 @@ class CategoriasController extends Controller
         $request->session()->flash('mensagem.sucesso',"Categoria '{$categoria}' removido com sucesso");
 
         return redirect(route('categorias.index'));
+    }
+
+    public function edit(Categorias $categoria)
+    {
+        //dd($categoria->categoria);
+        return view('categorias.edit')->with('categoria',$categoria);
+    }
+
+    public function update(Categorias $categoria, Request $request )
+    {
+        $categoria->categoria = $request->categoria;
+        $categoria->save();
+
+        return redirect(route('categorias.index'))
+            ->with('mensagem.sucesso', "Produto '$categoria->categoria' atualizado");
     }
 }
