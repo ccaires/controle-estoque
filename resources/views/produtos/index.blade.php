@@ -12,20 +12,12 @@
         </div>
     </div>
 
-<<<<<<< HEAD
     <form action="{{route('produtos.index', $categoria->id)}}" method="get">
         @csrf
         <div class="container">
             <div class="row">
-                <div class="col-4 mb-3">
+                <div class="col-6">
                     <input type="text" class="form-control" name="p_produto" value="{{$p_produto}}" placeholder="Pesquisar...">
-=======
-    <form action="" method="GET">
-        <div class="container mb-4">
-            <div class="row">
-                <div class="col-4">
-                    <input type="search" id="p_produto" name="p_produto" class="form-control" value="{{$p_produto}}">
->>>>>>> 76b306fe62708ea4c64dd87b3cb9e0781a7d42e4
                 </div>
                 <div class="col-4">
                     <button type="submit" class="btn btn-info">Pesquisar</button>
@@ -65,20 +57,23 @@
                 </span>
             </div>
 
-            <form action="{{ route('produtos.destroy', $produto->id) }}" method="post">
-                @csrf
-                <button class="btn btn-primary btn-sm">Editar</button>
-            </form>
+            <span>
+                <div class="d-flex justify-content-between">
+                    <form action="" method="post">
+                        @csrf
+                        <button class="btn btn-danger btn-sm bi bi-cart-dash"></button>
+                    </form>
+                    <form action="" method="post">
+                        @csrf
+                        <button class="btn btn-primary btn-sm ms-2">Editar</button>
+                    </form>
 
-            <form action="{{ route('produtos.destroy', $produto->id) }}" method="post">
-                @csrf
-                <button class="btn btn-danger btn-sm">Excluir</button>
-            </form>
-
-            <form action="" method="post">
-                @csrf
-                <button class="btn btn-danger btn-sm bi bi-cart-dash"></button>
-            </form>
+                    <form action="{{ route('produtos.destroy', $produto->id) }}" method="post">
+                        @csrf
+                        <button class="btn btn-danger btn-sm ms-2">Excluir</button>
+                    </form>
+                </div>
+            </span>
 
         </li>
         @endforeach

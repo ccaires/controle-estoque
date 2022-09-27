@@ -31,20 +31,10 @@ Route::post('/categorias/destroy/{id}', [CategoriasController::class, 'destroy']
     ->name('categorias.destroy');
 
 Route::resource('/categorias/{categoria}/produtos', ProdutosController::class)
-<<<<<<< HEAD
     ->only(['index', 'create', 'store']);
 
 Route::post('/categorias/produtos/destroy/{id}', [ProdutosController::class, 'destroy'])
     ->name('produtos.destroy');
-
-// Route::post('/categorias/{categoria}/produtos', [ProdutosController::class, 'search'])
-//     ->name('produtos.search');
-
-
-// Route::post('/produtos/destroy/{id}',[ProdutosController::class, 'destroy'])
-//     ->name('produtos.destroy');
-=======
-    ->only(['index', 'create', 'store','retirar']);
 
 Route::get('/categorias/produtos/', [ProdutosController::class, 'search'])
     ->name('search');
@@ -52,4 +42,4 @@ Route::get('/categorias/produtos/', [ProdutosController::class, 'search'])
 
 Route::post('/categorias/produtos/destroy/{id}', [ProdutosController::class, 'destroy'])
     ->name('produtos.destroy');
->>>>>>> 76b306fe62708ea4c64dd87b3cb9e0781a7d42e4
+

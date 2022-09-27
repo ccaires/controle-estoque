@@ -63,47 +63,16 @@ class ProdutosController extends Controller
         return redirect(route('produtos.index',$categoria));
     }
 
-<<<<<<< HEAD
     public function search(Request $request)
     {
-        // $p_produto = trim($request->get('p_produto'));
-
-        // //$produtos = Produtos::all()->where('categoria',$categoria);
-        // $produtos = DB::table('produtos')
-        //             ->select('nome','quantidade','vencimento')
-        //             ->where('nome','LIKE','%'.$p_produto.'%');
-                    
-                    
+                            
         $p_produto = $request->query('p_produto');
-        //dd($p_produto);
 
         $produtos = DB::table('produtos')
             ->where('nome','like',"%".$p_produto."%")->get();
 
-        //dd($produtos);
-
         return view('produtos.search')
             ->with('produtos',$produtos);
-=======
-    // public function search(Request $request)
-    // {
-    //     // $p_produto = $request->input('p_produto');
-    //     // $produtos = Produtos::query()
-    //     //     ->where('nome','like',"%$p_produto%")->get();
-
-    //     $p_produto = $request['p_produto'];
-    //     $produtos = Produtos::where('nome','like',"%$p_produto%")->get();
-
-
-    //     return view('produtos.search')
-    //             ->with('produtos',$produtos)
-    //             ->with('search',$p_produto);
-    // }
-
-    public function retirar()
-    {
-        # code...
->>>>>>> 76b306fe62708ea4c64dd87b3cb9e0781a7d42e4
-    }
        
+}
 }
