@@ -11,6 +11,7 @@ class Produtos extends Model
     use HasFactory;
 
     protected $fillable = ['nome','quantidade','vencimento','lote_id','categoria_id'];
+    protected $dates = ['vencimento'];
 
     public function categoria()
     {

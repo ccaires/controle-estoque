@@ -53,7 +53,7 @@
             </div>
             <div class="d-flex">
                 <span>
-                    {{$produto->vencimento}}
+                    {{$produto->vencimento->format('d/m/Y')}}
                 </span>
             </div>
 

@@ -38,12 +38,12 @@
             </div>
    
             <div class="col-md-6">
-                <label for="vencimento" class="form-label">Vencimento:</label>
+                <label for="vencimento" class="form-label">Vencimento: {{$produto->vencimento}}</label>
                 <input type="date" 
                        id="vencimento"
                        name="vencimento"
                        class="form-control"
-                       @isset($produto)value="{{$produto->vencimento}}"@endisset>
+                       @isset($produto) value="{{$produto->vencimento->format('Y-m-d')}}"@endisset>
             </div>
         </div>
     </div>

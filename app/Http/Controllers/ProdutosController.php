@@ -77,6 +77,7 @@ class ProdutosController extends Controller
 
     public function edit(Produtos $produto)
     {
+        //dd($produto);
         $categoria = $produto->categoria_id;
         return view('produtos.edit')->with('produto',$produto)->with('categoria',$categoria);
     }
