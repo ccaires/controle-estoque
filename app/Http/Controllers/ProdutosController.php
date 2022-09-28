@@ -93,4 +93,25 @@ class ProdutosController extends Controller
         return redirect(route('produtos.index',$categoria))
             ->with('mensagem.sucesso', "Produto '$produto->nome' atualizado");
     }
+
+    public function saida(Produtos $id, Categorias $categoria)
+    {
+        $categoria = $id->categoria_id;
+        $produto = $id;
+        return view('produtos.saida')
+                ->with('produto', $produto)
+                ->with('categoria',$categoria);
+    }
+
+    public function saidaUpdate(Produtos $id, Request $request)
+    {
+        $categoria = $id->categoria_id;
+        
+        DB::table('produtos')
+                ->where('nome',$id->nome)
+                ->decrement('quantidade',$request->quantidade);
+        
+        return redirect(route('produtos.index', $categoria))
+                ->with('mensagem.sucesso',"Retirada do estoque realizada com êxito");
+    }
 }

@@ -27,7 +27,7 @@
     </form>
 
     @isset($mensagemSucesso)
-    <div class="alert alert-success">
+    <div class="alert alert-success mt-2">
         {{$mensagemSucesso}}
     </div>
     @endisset
@@ -59,11 +59,8 @@
 
             <span>
                 <div class="d-flex justify-content-between">
-                    <form action="" method="post">
-                        @csrf
-                        <button class="btn btn-danger btn-sm bi bi-cart-dash"></button>
-                    </form>
-                    <a href="{{route('produtos.edit', $produto->id) }}" class="btn btn-primary btn-sm mb-10">Editar</a>
+                    <a href="{{ route('produtos.saida', $produto->id) }}" class="btn btn-primary btn-sm mb-10 ms-2">Saída</a>
+                    <a href="{{route('produtos.edit', $produto->id) }}" class="btn btn-primary btn-sm mb-10 ms-2">Editar</a>
                     <form action="{{ route('produtos.destroy', $produto->id) }}" method="post">
                         @csrf
                         <button class="btn btn-danger btn-sm ms-2">Excluir</button>
