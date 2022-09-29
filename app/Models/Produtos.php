@@ -18,4 +18,11 @@ class Produtos extends Model
         return $this->belongsTo(Categorias::class);
     }
 
+    protected static function booted()
+    {
+        self::addGlobalScope('ordered', function (Builder $queryBuilder){
+            $queryBuilder->orderBy('vencimento');
+        });
+    }
+
 }
