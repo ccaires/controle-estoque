@@ -12,9 +12,10 @@ class CategoriasController extends Controller
     {
         //dd($categoria->all());
         $categorias = Categorias::all();
+        $index = Categorias::paginate(1);
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
 
-        return view('categorias.index')->with('categorias', $categorias)->with('mensagemSucesso',$mensagemSucesso);
+        return view('categorias.index',compact('index'))->with('categorias', $categorias)->with('mensagemSucesso',$mensagemSucesso);
     }
 
     public function create()

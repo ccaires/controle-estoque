@@ -38,7 +38,7 @@
             </div>
    
             <div class="col-md-6">
-                <label for="vencimento" class="form-label">Vencimento: {{$produto->vencimento}}</label>
+                <label for="vencimento" class="form-label">Vencimento:</label>
                 <input type="date" 
                        id="vencimento"
                        name="vencimento"

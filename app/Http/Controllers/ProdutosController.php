@@ -25,12 +25,12 @@ class ProdutosController extends Controller
             ->with('produtos',$produtos);
         } else {
         $p_produto = "";
-
+        $index = Produtos::paginate(2);
         $produtos = Produtos::all()->where('categoria',$categoria);
         
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
         
-        return view('produtos.index')
+        return view('produtos.index',compact('index'))
             ->with('produtos', $produtos)
             ->with('categoria',$categoria)
             ->with('p_produto',$p_produto)

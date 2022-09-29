@@ -28,8 +28,7 @@
                 </span>
             </li>
         </a>
-
-
         @endforeach
     </ul>
+    {{$index->links()}}
 </x-layout>

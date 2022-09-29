@@ -43,32 +43,31 @@
 
     <ul class="list-group">
         @foreach($produtos as $produto)
-        <li class="list-group-item d-flex justify-content-between align-items-center">
+        <li class="list-group-item d-flex justify-content-between align-items-center btn-sm">
+            <div class="d-flex">
             {{$produto->nome}}
+            </div>
 
             <div class="d-flex justify-content-between">
-                <span>
                     {{$produto->quantidade}}
-                </span>
             </div>
-            <div class="d-flex">
-                <span>
+            <div class="d-flex justify-content-between">
                     {{$produto->vencimento->format('d/m/Y')}}
-                </span>
             </div>
 
-            <span>
-                <div class="d-flex justify-content-between">
-                    <a href="{{ route('produtos.saida', $produto->id) }}" class="btn btn-primary btn-sm mb-10 ms-2">Saída</a>
-                    <a href="{{route('produtos.edit', $produto->id) }}" class="btn btn-primary btn-sm mb-10 ms-2">Editar</a>
-                    <form action="{{ route('produtos.destroy', $produto->id) }}" method="post">
-                        @csrf
-                        <button class="btn btn-danger btn-sm ms-2">Excluir</button>
-                    </form>
-                </div>
-            </span>
+    <span>
+        <div class="d-flex justify-content-between">
+            <a href="{{ route('produtos.saida', $produto->id) }}" class="btn btn-primary btn-sm mb-10 ms-2">Saída Estoque</a>
+            <a href="{{route('produtos.edit', $produto->id) }}" class="btn btn-primary btn-sm mb-10 ms-2">Editar Produto</a>
+            <form action="{{ route('produtos.destroy', $produto->id) }}" method="post">
+                @csrf
+                <button class="btn btn-danger btn-sm ms-2">Excluir</button>
+            </form>
+        </div>
+    </span>
 
-        </li>
-        @endforeach
+    </li>
+    @endforeach
+    {{ $index->links() }}
     </ul>
 </x-layout>
