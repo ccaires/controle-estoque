@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CategoriasFormRequest;
 use App\Models\Categorias;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoriasController extends Controller
 {
     public function index(Request $request)
     {
         //dd($categoria->all());
-        $categorias = Categorias::all();
+        //$categorias = Categorias::all();
+        $categorias = DB::table('categorias')->paginate(10);
         $index = Categorias::paginate(1);
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
 

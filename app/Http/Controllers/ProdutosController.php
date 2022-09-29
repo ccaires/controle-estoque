@@ -13,7 +13,7 @@ class ProdutosController extends Controller
 {
     public function index(Request $request, Categorias $categoria)
     {
-        
+        $paginacao = Produtos::paginate(5);
         $p_produto = $request['p_produto'];
         if($p_produto != ""){
         $produtos = Produtos::where('nome','like',"%$p_produto%")
@@ -22,19 +22,23 @@ class ProdutosController extends Controller
             return view('produtos.index')
             ->with('categoria',$categoria)
             ->with('p_produto',$p_produto)
-            ->with('produtos',$produtos);
+            ->with('produtos',$produtos)
+            ->with('paginacao',$paginacao);
         } else {
         $p_produto = "";
-        $index = Produtos::paginate(2);
-        $produtos = Produtos::all()->where('categoria',$categoria);
+        //$paginacao = Produtos::paginate(5);
+        //$produtos = Produtos::all()->where('categoria',$categoria);
+        $produtos = DB::table('produtos')->paginate(5);
+        //dd($categoria);
         
         $mensagemSucesso = $request->session()->get('mensagem.sucesso');
         
-        return view('produtos.index',compact('index'))
+        return view('produtos.index',compact('paginacao'))
             ->with('produtos', $produtos)
             ->with('categoria',$categoria)
             ->with('p_produto',$p_produto)
-            ->with('mensagemSucesso',$mensagemSucesso);
+            ->with('mensagemSucesso',$mensagemSucesso)
+            ->with('paginacao',$paginacao);
         }      
     }
 

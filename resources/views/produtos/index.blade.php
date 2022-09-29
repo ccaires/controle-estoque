@@ -52,7 +52,7 @@
                     {{$produto->quantidade}}
             </div>
             <div class="d-flex justify-content-between">
-                    {{$produto->vencimento->format('d/m/Y')}}
+                    {{$produto->vencimento}}
             </div>
 
     <span>
@@ -68,6 +68,6 @@
 
     </li>
     @endforeach
-    {{ $index->links() }}
+    {{ $paginacao->links() }}
     </ul>
 </x-layout>
