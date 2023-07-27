@@ -33,10 +33,11 @@
     @endisset
 
 
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mt-3">
         <h5>Produto</h5>
-        <h5>Quantidade</h5>
+        <h5>Estoque</h5>
         <h5>Vencimento</h5>
+        <h5>Dias para vencer</h5>
         <h5>Ação</h5>
     </div>
 
@@ -47,9 +48,11 @@
             <div class="d-flex">
             {{$produto->nome}}
             </div>
-
             <div class="d-flex justify-content-between">
                     {{$produto->quantidade}}
+            </div>
+            <div class="d-flex justify-content-between">
+                    {{$produto->vencimento}}
             </div>
             <div class="d-flex justify-content-between">
                     {{$produto->vencimento}}
